@@ -1,69 +1,69 @@
-// Mock data for the pharmaceutical data analyst portfolio
+// Mock data for the data analyst portfolio
 
 export const mockProjects = [
   {
     id: 1,
-    title: "Clinical Trial Efficacy Analysis",
-    description: "Comprehensive statistical analysis of Phase III clinical trial data for a novel cardiovascular drug, identifying key efficacy markers and patient subgroups.",
-    category: "clinical",
-    technologies: ["R", "SAS", "Python", "SQL", "Tableau", "CDISC Standards"],
+    title: "Customer Behavior Analytics Platform",
+    description: "Comprehensive analysis of customer journey data to identify key touchpoints and optimize conversion rates across multiple channels.",
+    category: "business-intelligence",
+    technologies: ["Python", "SQL", "Tableau", "AWS", "Machine Learning", "A/B Testing"],
     date: "2024",
-    impact: "12% improvement in patient outcomes",
+    impact: "15% increase in conversion rates",
     githubUrl: "https://github.com/example",
     featured: true
   },
   {
     id: 2,
-    title: "Drug Safety Signal Detection",
-    description: "Developed machine learning models to detect adverse drug reactions from FAERS database, implementing automated safety surveillance systems.",
-    category: "safety",
-    technologies: ["Python", "Machine Learning", "PostgreSQL", "PowerBI", "FDA FAERS"],
+    title: "Predictive Sales Forecasting Model",
+    description: "Built machine learning models to predict quarterly sales performance with 92% accuracy, enabling better inventory management and resource allocation.",
+    category: "machine-learning",
+    technologies: ["Python", "Scikit-learn", "Pandas", "Time Series Analysis", "PostgreSQL"],
     date: "2024",
-    impact: "30% faster signal detection",
+    impact: "92% prediction accuracy",
     githubUrl: null,
     featured: true
   },
   {
     id: 3,
-    title: "Market Access Analytics Dashboard",
-    description: "Built interactive dashboard analyzing market penetration and competitive landscape for oncology therapeutics across 15 global markets.",
-    category: "market",
-    technologies: ["Tableau", "Python", "API Integration", "Excel VBA", "SQL Server"],
+    title: "Financial Risk Assessment Dashboard",
+    description: "Interactive dashboard analyzing market trends and risk factors for investment portfolio optimization across different asset classes.",
+    category: "financial-analysis",
+    technologies: ["R", "Shiny", "Power BI", "Excel VBA", "SQL Server", "Monte Carlo"],
     date: "2023",
-    impact: "€2M+ revenue optimization",
+    impact: "25% risk reduction",
     githubUrl: "https://github.com/example",
     featured: false
   },
   {
     id: 4,
-    title: "Biomarker Discovery Platform",
-    description: "Statistical analysis of genomic data to identify predictive biomarkers for immunotherapy response in lung cancer patients.",
-    category: "drug-discovery",
-    technologies: ["R", "Bioconductor", "Python", "Machine Learning", "Cloud Computing"],
+    title: "Social Media Sentiment Analysis",
+    description: "Natural language processing pipeline to analyze brand sentiment across social platforms and track reputation metrics in real-time.",
+    category: "nlp-analytics",
+    technologies: ["Python", "NLTK", "Sentiment Analysis", "API Integration", "MongoDB"],
     date: "2023",
-    impact: "3 potential biomarkers identified",
+    impact: "Real-time brand monitoring",
     githubUrl: "https://github.com/example",
     featured: true
   },
   {
     id: 5,
-    title: "Real-World Evidence Study",
-    description: "Longitudinal cohort study analyzing treatment patterns and outcomes for diabetes medications using electronic health records.",
-    category: "clinical",
-    technologies: ["SAS", "R", "SQL", "OMOP CDM", "Epidemiology Methods"],
+    title: "E-commerce Performance Analysis",
+    description: "End-to-end analysis of e-commerce metrics including customer acquisition costs, lifetime value, and product performance optimization.",
+    category: "business-intelligence",
+    technologies: ["SQL", "Python", "Google Analytics", "Looker", "Statistical Analysis"],
     date: "2023",
-    impact: "Published in peer-reviewed journal",
+    impact: "30% improvement in ROI",
     githubUrl: null,
     featured: false
   },
   {
     id: 6,
-    title: "Pharmaceutical Supply Chain Analytics",
-    description: "Predictive modeling for drug shortage prevention and inventory optimization across global pharmaceutical supply networks.",
-    category: "market",
-    technologies: ["Python", "Time Series Analysis", "SQL", "Apache Airflow", "AWS"],
+    title: "Supply Chain Optimization Model",
+    description: "Predictive modeling for supply chain efficiency, reducing costs and improving delivery times through data-driven optimization strategies.",
+    category: "operations-research",
+    technologies: ["Python", "Linear Programming", "Optimization", "SQL", "Tableau"],
     date: "2022",
-    impact: "25% reduction in stockouts",
+    impact: "20% cost reduction",
     githubUrl: "https://github.com/example",
     featured: false
   }
@@ -71,51 +71,42 @@ export const mockProjects = [
 
 export const mockEducation = [
   {
-    degree: "Master of Science in Biostatistics",
-    institution: "Harvard T.H. Chan School of Public Health",
-    location: "Boston, MA",
+    degree: "Master of Science in Data Science",
+    institution: "University of California, Berkeley",
+    location: "Berkeley, CA",
     period: "2020 - 2022",
     gpa: "3.9/4.0",
-    description: "Specialized in pharmaceutical statistics, clinical trial design, and regulatory analytics. Thesis focused on adaptive clinical trial methodologies for rare diseases.",
+    description: "Specialized in machine learning, statistical modeling, and data visualization. Focused on applying advanced analytics to solve real-world business problems.",
     achievements: [
       "Dean's List for Academic Excellence (4 semesters)",
-      "Graduate Research Assistant - Biostatistics Collaboration Center",
-      "Published 2 peer-reviewed papers on clinical trial methodology",
-      "Winner of Student Research Competition 2022"
+      "Graduate Research Assistant - Data Science Lab",
+      "Published 2 peer-reviewed papers on predictive modeling",
+      "Winner of University Data Science Competition 2022"
     ]
   },
   {
     degree: "Bachelor of Science in Statistics",
-    institution: "University of California, Berkeley",
-    location: "Berkeley, CA",
+    institution: "University of California, Los Angeles",
+    location: "Los Angeles, CA",
     period: "2016 - 2020",
     gpa: "3.8/4.0",
-    description: "Strong foundation in mathematical statistics, probability theory, and data analysis with emphasis on healthcare applications.",
+    description: "Strong foundation in mathematical statistics, probability theory, and computational methods with emphasis on business applications.",
     achievements: [
       "Magna Cum Laude graduate",
       "Statistics Department Honor Society member",
-      "Research intern at UCSF Clinical Research Center",
-      "Capstone project on pharmaceutical market analysis"
+      "Research intern at UCLA Business Analytics Center",
+      "Capstone project on financial market analysis"
     ]
   }
 ];
 
 export const mockCertifications = [
   {
-    name: "SAS Certified Clinical Trials Programmer",
-    issuer: "SAS Institute",
-    date: "2023",
-    expiry: "2026",
-    description: "Advanced certification in SAS programming for clinical trials, including CDISC standards, regulatory submissions, and data management.",
-    skills: ["SAS Programming", "CDISC", "Clinical Data Management", "Regulatory Compliance"],
-    credentialUrl: "https://example.com/credential"
-  },
-  {
     name: "AWS Certified Solutions Architect",
     issuer: "Amazon Web Services",
     date: "2023",
     expiry: "2026",
-    description: "Cloud architecture certification focusing on scalable data analytics solutions and machine learning deployment in healthcare.",
+    description: "Cloud architecture certification focusing on scalable data analytics solutions and machine learning deployment.",
     skills: ["Cloud Architecture", "Data Lakes", "Machine Learning", "Security"],
     credentialUrl: "https://example.com/credential"
   },
@@ -138,52 +129,61 @@ export const mockCertifications = [
     credentialUrl: "https://example.com/credential"
   },
   {
-    name: "ICH GCP Certification",
-    issuer: "CITI Program",
+    name: "Tableau Desktop Specialist",
+    issuer: "Tableau",
     date: "2023",
     expiry: "2026",
-    description: "Good Clinical Practice certification essential for pharmaceutical research and clinical trial conduct.",
-    skills: ["Clinical Research", "GCP Guidelines", "Ethics", "Regulatory Compliance"],
+    description: "Advanced certification in data visualization and dashboard development using Tableau's comprehensive analytics platform.",
+    skills: ["Data Visualization", "Dashboard Design", "Business Intelligence", "Analytics"],
     credentialUrl: "https://example.com/credential"
   },
   {
-    name: "Machine Learning for Healthcare Specialization",
-    issuer: "Stanford University (Coursera)",
-    date: "2022",
+    name: "Microsoft Azure Data Scientist Associate",
+    issuer: "Microsoft",
+    date: "2023",
+    expiry: "2025",
+    description: "Certification in implementing and running machine learning workloads on Azure cloud platform.",
+    skills: ["Azure ML", "Data Science", "Machine Learning", "Cloud Computing"],
+    credentialUrl: "https://example.com/credential"
+  },
+  {
+    name: "Python for Data Science Specialization",
+    issuer: "University of Michigan (Coursera)",
+    date: "2021",
     expiry: null,
-    description: "Comprehensive specialization covering ML applications in healthcare, from predictive modeling to clinical decision support.",
-    skills: ["Healthcare ML", "Predictive Modeling", "Clinical Decision Support", "Deep Learning"],
+    description: "Comprehensive specialization covering Python programming for data analysis, visualization, and machine learning applications.",
+    skills: ["Python Programming", "Data Analysis", "Machine Learning", "Data Visualization"],
     credentialUrl: "https://example.com/credential"
   }
 ];
 
 export const mockSkills = {
   "programming-languages": [
-    { name: "Python", level: 5, experience: "5+ years, primary language for ML and data analysis" },
-    { name: "R", level: 5, experience: "4+ years, statistical computing and bioinformatics" },
-    { name: "SAS", level: 4, experience: "3+ years, clinical trials and regulatory submissions" },
+    { name: "Python", level: 5, experience: "5+ years, primary language for data analysis and ML" },
+    { name: "R", level: 4, experience: "4+ years, statistical computing and visualization" },
     { name: "SQL", level: 5, experience: "5+ years, database design and complex queries" },
-    { name: "Java", level: 3, experience: "2+ years, enterprise applications and APIs" }
+    { name: "JavaScript", level: 3, experience: "2+ years, web development and data visualization" },
+    { name: "Scala", level: 3, experience: "2+ years, big data processing with Spark" }
   ],
   "data-analytics": [
-    { name: "Statistical Modeling", level: 5, experience: "Advanced expertise in biostatistics and clinical analytics" },
-    { name: "Machine Learning", level: 4, experience: "Supervised/unsupervised learning, healthcare applications" },
-    { name: "Data Visualization", level: 5, experience: "Tableau, PowerBI, ggplot2, matplotlib expertise" },
-    { name: "Clinical Data Analysis", level: 5, experience: "Phase I-IV trials, real-world evidence studies" },
-    { name: "Regulatory Analytics", level: 4, experience: "FDA submissions, CDISC standards, validation" }
+    { name: "Statistical Modeling", level: 5, experience: "Advanced expertise in predictive and descriptive analytics" },
+    { name: "Machine Learning", level: 4, experience: "Supervised/unsupervised learning, deep learning frameworks" },
+    { name: "Data Visualization", level: 5, experience: "Tableau, Power BI, D3.js, matplotlib expertise" },
+    { name: "Business Intelligence", level: 4, experience: "KPI development, dashboard design, stakeholder reporting" },
+    { name: "A/B Testing", level: 4, experience: "Experimental design and statistical significance testing" }
   ],
   "tools-platforms": [
     { name: "Tableau", level: 5, experience: "Advanced dashboard development and server administration" },
     { name: "Power BI", level: 4, experience: "Enterprise reporting and self-service analytics" },
-    { name: "AWS", level: 4, experience: "S3, EC2, Redshift, SageMaker for healthcare analytics" },
-    { name: "Google Cloud", level: 4, experience: "BigQuery, AI Platform, healthcare APIs" },
-    { name: "Docker/Kubernetes", level: 3, experience: "Containerization and orchestration for analytics" }
+    { name: "AWS", level: 4, experience: "S3, EC2, Redshift, SageMaker for data analytics" },
+    { name: "Google Cloud", level: 4, experience: "BigQuery, AI Platform, data engineering tools" },
+    { name: "Apache Spark", level: 3, experience: "Big data processing and distributed computing" }
   ],
   "domain-expertise": [
-    { name: "Clinical Research", level: 5, experience: "End-to-end clinical trial analytics and reporting" },
-    { name: "Pharmaceutical Industry", level: 5, experience: "Drug development lifecycle and regulatory requirements" },
-    { name: "Healthcare Data", level: 5, experience: "EHR, claims data, clinical registries analysis" },
-    { name: "Regulatory Compliance", level: 4, experience: "FDA, EMA guidelines and validation practices" },
-    { name: "Market Access", level: 4, experience: "HEOR, pharmacoeconomics, and payer analytics" }
+    { name: "Business Analytics", level: 5, experience: "End-to-end business intelligence and KPI development" },
+    { name: "Financial Analysis", level: 4, experience: "Risk modeling, portfolio optimization, market analysis" },
+    { name: "Marketing Analytics", level: 4, experience: "Customer segmentation, campaign optimization, attribution" },
+    { name: "Operations Research", level: 3, experience: "Supply chain optimization and process improvement" },
+    { name: "Data Strategy", level: 4, experience: "Data governance, architecture planning, team leadership" }
   ]
 };
