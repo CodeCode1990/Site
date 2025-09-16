@@ -129,9 +129,8 @@ const Header = () => {
                     backgroundSize: "200% 100%"
                   }}
                 >
-                  YASH
+                  YASH PATEL
                 </motion.span>
-                <span className="text-cyan-400">PATEL</span>
                 
                 {/* Animated Underline */}
                 <motion.div
