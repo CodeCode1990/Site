@@ -107,26 +107,21 @@ const Header = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <motion.span
+                  className="relative z-10"
                   animate={{
-                    background: [
-                      "linear-gradient(90deg, #ffffff 0%, #06b6d4 50%, #ffffff 100%)",
-                      "linear-gradient(90deg, #06b6d4 0%, #22c55e 50%, #06b6d4 100%)",
-                      "linear-gradient(90deg, #22c55e 0%, #a855f7 50%, #22c55e 100%)",
-                      "linear-gradient(90deg, #a855f7 0%, #f59e0b 50%, #a855f7 100%)",
-                      "linear-gradient(90deg, #f59e0b 0%, #ffffff 50%, #f59e0b 100%)",
-                      "linear-gradient(90deg, #ffffff 0%, #06b6d4 50%, #ffffff 100%)"
+                    color: [
+                      "#ffffff",
+                      "#06b6d4", 
+                      "#22c55e",
+                      "#a855f7",
+                      "#f59e0b",
+                      "#ffffff"
                     ]
                   }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,
                     ease: "linear"
-                  }}
-                  style={{
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundSize: "200% 100%"
                   }}
                 >
                   YASH PATEL
