@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Toaster } from "./components/ui/toaster";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Footer from "./Footer";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Education from "./pages/Education";
