@@ -274,7 +274,7 @@ const Header = () => {
                           <span className="font-mono text-sm uppercase tracking-wider block">{item.name}</span>
                           <span className="text-xs text-gray-400">{item.description}</span>
                         </div>
-                      </Link>
+                      </TransitionLink>
                     </motion.div>
                   );
                 })}
