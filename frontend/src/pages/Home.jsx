@@ -97,15 +97,52 @@ const Home = () => {
             </div>
             
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+              className="text-5xl md:text-7xl font-bold mb-6 leading-tight font-mono"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="text-white">YASH </span>
-              <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">
+              <motion.span 
+                className="text-white"
+                animate={{
+                  color: [
+                    "#ffffff",
+                    "#06b6d4", 
+                    "#22c55e",
+                    "#a855f7",
+                    "#f59e0b",
+                    "#ffffff"
+                  ]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                YASH 
+              </motion.span>
+              <motion.span 
+                className="text-cyan-400"
+                animate={{
+                  color: [
+                    "#06b6d4",
+                    "#22c55e",
+                    "#a855f7",
+                    "#f59e0b",
+                    "#ffffff",
+                    "#06b6d4"
+                  ]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: 1 // Offset the animation for a wave effect
+                }}
+              >
                 PATEL
-              </span>
+              </motion.span>
             </motion.h1>
             
             <div className="text-2xl md:text-3xl text-gray-300 mb-8 h-12 font-mono">
