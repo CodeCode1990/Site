@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Home, FolderOpen, GraduationCap, MessageCircle, Code2 } from 'lucide-react';
+import { Menu, X, Home, FolderOpen, GraduationCap, MessageCircle, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
@@ -22,28 +22,44 @@ const Header = () => {
       path: '/', 
       icon: Home,
       color: 'cyan',
-      description: 'Overview & Skills'
+      description: 'Overview & Skills',
+      animation: {
+        hover: { scale: [1, 1.2, 1], rotate: [0, -10, 10, 0] },
+        active: { y: [0, -2, 0], scale: [1, 1.1, 1] }
+      }
     },
     { 
       name: 'Projects', 
       path: '/projects', 
       icon: FolderOpen,
       color: 'green',
-      description: 'Portfolio & Work'
+      description: 'Portfolio & Work',
+      animation: {
+        hover: { rotateY: [0, 180], scale: [1, 1.1, 1] },
+        active: { rotateX: [0, 360], scale: [1, 1.2, 1] }
+      }
     },
     { 
       name: 'Education', 
       path: '/education', 
       icon: GraduationCap,
       color: 'purple',
-      description: 'Learning & Growth'
+      description: 'Learning & Growth',
+      animation: {
+        hover: { rotate: [0, 15, -15, 0], scale: [1, 1.15, 1] },
+        active: { rotateZ: [0, 20, -20, 0], y: [0, -3, 0] }
+      }
     },
     { 
       name: 'Connect', 
       path: '/connect', 
       icon: MessageCircle,
       color: 'orange',
-      description: 'Get In Touch'
+      description: 'Get In Touch',
+      animation: {
+        hover: { scale: [1, 0.9, 1.1, 1], rotate: [0, 5, -5, 0] },
+        active: { scale: [1, 1.3, 1], rotate: [0, 360] }
+      }
     }
   ];
 
@@ -82,14 +98,59 @@ const Header = () => {
               }}
               transition={{ duration: 0.3 }}
             >
-              <Code2 className="w-5 h-5 text-black" />
+              <Zap className="w-5 h-5 text-black" />
             </motion.div>
-            <motion.span 
-              className="text-xl font-bold font-mono tracking-tight"
-              whileHover={{ scale: 1.05 }}
-            >
-              YASH<span className="text-cyan-400">PATEL</span>
-            </motion.span>
+            <div className="relative">
+              <motion.span 
+                className="text-xl font-bold font-mono tracking-tight relative"
+                whileHover={{ scale: 1.05 }}
+              >
+                <motion.span
+                  animate={{
+                    background: [
+                      "linear-gradient(90deg, #ffffff 0%, #06b6d4 50%, #ffffff 100%)",
+                      "linear-gradient(90deg, #06b6d4 0%, #22c55e 50%, #06b6d4 100%)",
+                      "linear-gradient(90deg, #22c55e 0%, #a855f7 50%, #22c55e 100%)",
+                      "linear-gradient(90deg, #a855f7 0%, #f59e0b 50%, #a855f7 100%)",
+                      "linear-gradient(90deg, #f59e0b 0%, #ffffff 50%, #f59e0b 100%)",
+                      "linear-gradient(90deg, #ffffff 0%, #06b6d4 50%, #ffffff 100%)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  style={{
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundSize: "200% 100%"
+                  }}
+                >
+                  YASH
+                </motion.span>
+                <span className="text-cyan-400">PATEL</span>
+                
+                {/* Animated Underline */}
+                <motion.div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
+                  animate={{
+                    background: [
+                      "linear-gradient(90deg, #06b6d4, #22c55e)",
+                      "linear-gradient(90deg, #22c55e, #a855f7)",
+                      "linear-gradient(90deg, #a855f7, #f59e0b)",
+                      "linear-gradient(90deg, #f59e0b, #06b6d4)",
+                    ]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+              </motion.span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -112,14 +173,12 @@ const Header = () => {
                     whileTap={{ scale: 0.95 }}
                   >
                     <motion.div
-                      animate={active ? { 
-                        rotate: [0, 10, -10, 0],
-                        scale: [1, 1.1, 1]
-                      } : {}}
+                      animate={active ? item.animation.active : {}}
+                      whileHover={item.animation.hover}
                       transition={{ 
-                        duration: 0.5,
+                        duration: 0.6,
                         repeat: active ? Infinity : 0,
-                        repeatDelay: 3
+                        repeatDelay: active ? 2 : 0
                       }}
                     >
                       <Icon className="w-4 h-4" />
@@ -199,7 +258,17 @@ const Header = () => {
                         onClick={() => setIsMenuOpen(false)}
                         className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${getColorClasses(item.color, active)}`}
                       >
-                        <Icon className="w-5 h-5" />
+                        <motion.div
+                          animate={active ? item.animation.active : {}}
+                          whileHover={item.animation.hover}
+                          transition={{ 
+                            duration: 0.6,
+                            repeat: active ? Infinity : 0,
+                            repeatDelay: active ? 2 : 0
+                          }}
+                        >
+                          <Icon className="w-5 h-5" />
+                        </motion.div>
                         <div>
                           <span className="font-mono text-sm uppercase tracking-wider block">{item.name}</span>
                           <span className="text-xs text-gray-400">{item.description}</span>

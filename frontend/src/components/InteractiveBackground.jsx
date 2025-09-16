@@ -5,7 +5,7 @@ const InteractiveBackground = () => {
   const mouseRef = useRef({ x: 0, y: 0 });
   const animationFrameRef = useRef();
   const particlesRef = useRef([]);
-  const geometryRef = useRef([]);
+  const circlesRef = useRef([]);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
@@ -42,29 +42,28 @@ const InteractiveBackground = () => {
       }
     };
 
-    // Initialize floating geometry
-    const initGeometry = () => {
-      geometryRef.current = [];
-      const geoCount = Math.min(15, Math.floor(dimensions.width / 150));
+    // Initialize small floating circles
+    const initCircles = () => {
+      circlesRef.current = [];
+      const circleCount = Math.min(25, Math.floor(dimensions.width / 100));
       
-      for (let i = 0; i < geoCount; i++) {
-        geometryRef.current.push({
+      for (let i = 0; i < circleCount; i++) {
+        circlesRef.current.push({
           x: Math.random() * dimensions.width,
           y: Math.random() * dimensions.height,
-          size: Math.random() * 40 + 20,
-          rotation: Math.random() * Math.PI * 2,
-          rotationSpeed: (Math.random() - 0.5) * 0.02,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          type: Math.floor(Math.random() * 3), // 0: triangle, 1: square, 2: hexagon
-          opacity: Math.random() * 0.1 + 0.05,
-          color: ['cyan', 'green', 'purple', 'orange'][Math.floor(Math.random() * 4)]
+          size: Math.random() * 8 + 4, // Small circles (4-12px)
+          vx: (Math.random() - 0.5) * 0.2,
+          vy: (Math.random() - 0.5) * 0.2,
+          opacity: Math.random() * 0.15 + 0.05,
+          color: ['cyan', 'green', 'purple', 'orange'][Math.floor(Math.random() * 4)],
+          pulseSpeed: Math.random() * 0.02 + 0.01,
+          pulse: Math.random() * Math.PI * 2
         });
       }
     };
 
     initParticles();
-    initGeometry();
+    initCircles();
 
     const handleMouseMove = (e) => {
       mouseRef.current.x = e.clientX;
@@ -81,38 +80,6 @@ const InteractiveBackground = () => {
         orange: `rgba(251, 146, 60, ${alpha})`
       };
       return colors[color] || colors.cyan;
-    };
-
-    const drawGeometry = (ctx, geo) => {
-      ctx.save();
-      ctx.translate(geo.x, geo.y);
-      ctx.rotate(geo.rotation);
-      ctx.fillStyle = getColorRGBA(geo.color, geo.opacity);
-      ctx.strokeStyle = getColorRGBA(geo.color, geo.opacity * 2);
-      ctx.lineWidth = 1;
-      
-      ctx.beginPath();
-      if (geo.type === 0) { // Triangle
-        ctx.moveTo(0, -geo.size/2);
-        ctx.lineTo(-geo.size/2, geo.size/2);
-        ctx.lineTo(geo.size/2, geo.size/2);
-        ctx.closePath();
-      } else if (geo.type === 1) { // Square
-        ctx.rect(-geo.size/2, -geo.size/2, geo.size, geo.size);
-      } else { // Hexagon
-        for (let i = 0; i < 6; i++) {
-          const angle = (i * Math.PI) / 3;
-          const x = (geo.size/2) * Math.cos(angle);
-          const y = (geo.size/2) * Math.sin(angle);
-          if (i === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.closePath();
-      }
-      
-      ctx.fill();
-      ctx.stroke();
-      ctx.restore();
     };
 
     const animate = () => {
@@ -138,42 +105,60 @@ const InteractiveBackground = () => {
         ctx.stroke();
       }
 
-      // Update and draw floating geometry
-      geometryRef.current.forEach((geo) => {
+      // Update and draw small floating circles
+      circlesRef.current.forEach((circle) => {
+        // Update pulse
+        circle.pulse += circle.pulseSpeed;
+        const pulseFactor = 1 + Math.sin(circle.pulse) * 0.3;
+        
         // Mouse interaction
-        const dx = mouseRef.current.x - geo.x;
-        const dy = mouseRef.current.y - geo.y;
+        const dx = mouseRef.current.x - circle.x;
+        const dy = mouseRef.current.y - circle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (distance < 200) {
-          const force = (200 - distance) / 200;
-          geo.vx += (dx / distance) * force * 0.005;
-          geo.vy += (dy / distance) * force * 0.005;
-          geo.opacity = Math.min(0.3, geo.opacity + force * 0.01);
-          geo.rotationSpeed += force * 0.01;
+        if (distance < 150) {
+          const force = (150 - distance) / 150;
+          circle.vx += (dx / distance) * force * 0.003;
+          circle.vy += (dy / distance) * force * 0.003;
+          circle.opacity = Math.min(0.4, circle.opacity + force * 0.008);
         } else {
-          geo.opacity = Math.max(0.05, geo.opacity - 0.002);
-          geo.rotationSpeed *= 0.98;
+          circle.opacity = Math.max(0.05, circle.opacity - 0.001);
         }
 
-        geo.x += geo.vx;
-        geo.y += geo.vy;
-        geo.rotation += geo.rotationSpeed;
+        circle.x += circle.vx;
+        circle.y += circle.vy;
         
-        // Boundary check
-        if (geo.x < -geo.size) geo.x = dimensions.width + geo.size;
-        if (geo.x > dimensions.width + geo.size) geo.x = -geo.size;
-        if (geo.y < -geo.size) geo.y = dimensions.height + geo.size;
-        if (geo.y > dimensions.height + geo.size) geo.y = -geo.size;
+        // Boundary wrapping
+        if (circle.x < -circle.size) circle.x = dimensions.width + circle.size;
+        if (circle.x > dimensions.width + circle.size) circle.x = -circle.size;
+        if (circle.y < -circle.size) circle.y = dimensions.height + circle.size;
+        if (circle.y > dimensions.height + circle.size) circle.y = -circle.size;
         
         // Friction
-        geo.vx *= 0.995;
-        geo.vy *= 0.995;
+        circle.vx *= 0.998;
+        circle.vy *= 0.998;
 
-        drawGeometry(ctx, geo);
+        // Draw circle with pulse
+        const currentSize = circle.size * pulseFactor;
+        ctx.fillStyle = getColorRGBA(circle.color, circle.opacity);
+        ctx.strokeStyle = getColorRGBA(circle.color, circle.opacity * 0.5);
+        ctx.lineWidth = 1;
+        
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, currentSize, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        
+        // Add subtle glow
+        if (distance < 120) {
+          ctx.fillStyle = getColorRGBA(circle.color, circle.opacity * 0.2);
+          ctx.beginPath();
+          ctx.arc(circle.x, circle.y, currentSize * 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
       });
 
-      // Update and draw particles
+      // Update and draw particles (keep existing particle system)
       particlesRef.current.forEach((particle) => {
         // Pulse effect
         particle.pulse += 0.02;
@@ -231,7 +216,7 @@ const InteractiveBackground = () => {
         }
       });
 
-      // Draw enhanced connections
+      // Draw enhanced connections between particles
       for (let i = 0; i < particlesRef.current.length; i++) {
         for (let j = i + 1; j < particlesRef.current.length; j++) {
           const dx = particlesRef.current[i].x - particlesRef.current[j].x;

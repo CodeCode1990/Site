@@ -10,7 +10,7 @@ import Projects from "./pages/Projects";
 import Education from "./pages/Education";
 import Connect from "./pages/Connect";
 import InteractiveBackground from "./components/InteractiveBackground";
-import PageTransition from "./components/PageTransition";
+import PageTransition, { TransitionProvider } from "./components/PageTransition";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -48,12 +48,14 @@ function App() {
     <div className="App min-h-screen bg-black text-white relative overflow-x-hidden">
       <InteractiveBackground />
       <BrowserRouter>
-        <Header />
-        <main className="relative z-10">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-        <Toaster />
+        <TransitionProvider>
+          <Header />
+          <main className="relative z-10">
+            <AnimatedRoutes />
+          </main>
+          <Footer />
+          <Toaster />
+        </TransitionProvider>
       </BrowserRouter>
     </div>
   );
