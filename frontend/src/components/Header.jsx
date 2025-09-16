@@ -196,7 +196,7 @@ const Header = () => {
                     {item.description}
                     <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
                   </motion.div>
-                </Link>
+                </TransitionLink>
               );
             })}
           </nav>
