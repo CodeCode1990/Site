@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Home, FolderOpen, GraduationCap, MessageCircle, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import TransitionLink from './TransitionLink';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
