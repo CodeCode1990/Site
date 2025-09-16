@@ -160,7 +160,7 @@ const Header = () => {
               const Icon = item.icon;
               const active = isActive(item.path);
               return (
-                <Link
+                <TransitionLink
                   key={item.name}
                   to={item.path}
                   className="relative group"
