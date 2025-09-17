@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App min-h-screen bg-black text-white relative overflow-x-hidden">
       <InteractiveBackground />
-      <BrowserRouter>
+      <BrowserRouter basename="/Site">
         <TransitionProvider>
           <Header />
           <main className="relative z-10">
