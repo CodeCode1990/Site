@@ -1,283 +1,164 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Home, FolderOpen, GraduationCap, MessageCircle, Zap } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import TransitionLink from './TransitionLink';
+// src/components/Header.jsx
+
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { 
-      name: 'Home', 
-      path: '/', 
-      icon: Home,
-      color: 'cyan',
-      description: 'Overview & Skills',
-      animation: {
-        hover: { scale: [1, 1.2, 1], rotate: [0, -10, 10, 0] },
-        active: { y: [0, -2, 0], scale: [1, 1.1, 1] }
-      }
-    },
-    { 
-      name: 'Projects', 
-      path: '/projects', 
-      icon: FolderOpen,
-      color: 'green',
-      description: 'Portfolio & Work',
-      animation: {
-        hover: { rotateY: [0, 180], scale: [1, 1.1, 1] },
-        active: { rotateX: [0, 360], scale: [1, 1.2, 1] }
-      }
-    },
-    { 
-      name: 'Education', 
-      path: '/education', 
-      icon: GraduationCap,
-      color: 'purple',
-      description: 'Learning & Growth',
-      animation: {
-        hover: { rotate: [0, 15, -15, 0], scale: [1, 1.15, 1] },
-        active: { rotateZ: [0, 20, -20, 0], y: [0, -3, 0] }
-      }
-    },
-    { 
-      name: 'Connect', 
-      path: '/connect', 
-      icon: MessageCircle,
-      color: 'orange',
-      description: 'Get In Touch',
-      animation: {
-        hover: { scale: [1, 0.9, 1.1, 1], rotate: [0, 5, -5, 0] },
-        active: { scale: [1, 1.3, 1], rotate: [0, 360] }
-      }
-    }
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/experience", label: "Experience" },
+    { path: "/projects", label: "Projects" },
+    { path: "/connect", label: "Connect" },
   ];
 
-  const isActive = (path) => location.pathname === path;
-
-  const getColorClasses = (color, isActive) => {
-    const colors = {
-      cyan: isActive ? 'text-cyan-400 bg-cyan-400/20' : 'text-cyan-300/70 hover:text-cyan-400',
-      green: isActive ? 'text-green-400 bg-green-400/20' : 'text-green-300/70 hover:text-green-400',
-      purple: isActive ? 'text-purple-400 bg-purple-400/20' : 'text-purple-300/70 hover:text-purple-400',
-      orange: isActive ? 'text-orange-400 bg-orange-400/20' : 'text-orange-300/70 hover:text-orange-400'
-    };
-    return colors[color];
+  const isActive = (path) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(path);
   };
 
   return (
-    <motion.header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-4">
+      <nav className="max-w-7xl mx-auto">
+        <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <motion.div 
-              className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-green-400 rounded-sm flex items-center justify-center"
-              whileHover={{ 
-                scale: 1.1,
-                rotate: 360,
-                background: "linear-gradient(45deg, #06b6d4, #22c55e, #a855f7)"
-              }}
-              transition={{ duration: 0.3 }}
+          <Link to="/">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-2xl md:text-3xl font-black text-white hover:text-cyan-400 transition-colors duration-300"
             >
-              <Zap className="w-5 h-5 text-black" />
+              YP
             </motion.div>
-            <div className="relative">
-              <motion.span 
-                className="text-xl font-bold font-mono tracking-tight relative"
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.span
-                  className="relative z-10"
-                  animate={{
-                    color: [
-                      "#ffffff",
-                      "#06b6d4", 
-                      "#22c55e",
-                      "#a855f7",
-                      "#f59e0b",
-                      "#ffffff"
-                    ]
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                >
-                  YASH PATEL
-                </motion.span>
-                
-                {/* Animated Underline */}
-                <motion.div
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
-                  animate={{
-                    background: [
-                      "linear-gradient(90deg, #06b6d4, #22c55e)",
-                      "linear-gradient(90deg, #22c55e, #a855f7)",
-                      "linear-gradient(90deg, #a855f7, #f59e0b)",
-                      "linear-gradient(90deg, #f59e0b, #06b6d4)",
-                    ]
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                />
-              </motion.span>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-2">
+          <div className="hidden md:flex items-center gap-1 p-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
             {navItems.map((item) => {
-              const Icon = item.icon;
               const active = isActive(item.path);
               return (
-                <TransitionLink
-                  key={item.name}
+                <Link
+                  key={item.path}
                   to={item.path}
-                  className="relative group"
+                  className="relative"
                 >
                   <motion.div
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${getColorClasses(item.color, active)}`}
-                    whileHover={{ 
-                      scale: 1.05,
-                      y: -2
-                    }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`
+                      relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+                      ${active ? "text-black" : "text-gray-400 hover:text-white"}
+                    `}
                   >
-                    <motion.div
-                      animate={active ? item.animation.active : {}}
-                      whileHover={item.animation.hover}
-                      transition={{ 
-                        duration: 0.6,
-                        repeat: active ? Infinity : 0,
-                        repeatDelay: active ? 2 : 0
-                      }}
-                    >
-                      <Icon className="w-4 h-4" />
-                    </motion.div>
-                    <span className="font-mono text-sm uppercase tracking-wider">{item.name}</span>
+                    {active && (
+                      <motion.div
+                        layoutId="activeNavBg"
+                        className="absolute inset-0 bg-white rounded-full"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{item.label}</span>
                   </motion.div>
-                  
-                  {/* Tooltip */}
-                  <motion.div
-                    className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
-                    initial={{ opacity: 0, y: -10 }}
-                    whileHover={{ opacity: 1, y: 0 }}
-                  >
-                    {item.description}
-                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-                  </motion.div>
-                </TransitionLink>
+                </Link>
               );
             })}
-          </nav>
+          </div>
+
+          {/* Desktop CTA Button */}
+          <div className="hidden md:block">
+            <Link to="/connect">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-sm font-bold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
+              >
+                Let's Talk
+              </motion.button>
+            </Link>
+          </div>
 
           {/* Mobile Menu Button */}
           <motion.button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-white hover:text-cyan-400 transition-colors duration-200"
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg bg-white/5 border border-white/10"
           >
-            <AnimatePresence mode="wait">
-              {isMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: 0 }}
-                  animate={{ rotate: 180 }}
-                  exit={{ rotate: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="w-6 h-6" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 180 }}
-                  animate={{ rotate: 0 }}
-                  exit={{ rotate: 180 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="w-6 h-6" />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-white" />
+            ) : (
+              <Menu className="w-6 h-6 text-white" />
+            )}
           </motion.button>
         </div>
 
         {/* Mobile Navigation */}
         <AnimatePresence>
-          {isMenuOpen && (
+          {isMobileMenuOpen && (
             <motion.div
-              className="md:hidden absolute top-16 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-white/10"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
+              className="md:hidden mt-4 overflow-hidden"
             >
-              <nav className="px-6 py-4 space-y-2">
-                {navItems.map((item, index) => {
-                  const Icon = item.icon;
-                  const active = isActive(item.path);
-                  return (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <TransitionLink
-                        to={item.path}
-                        onClick={() => setIsMenuOpen(false)}
-                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${getColorClasses(item.color, active)}`}
+              <div className="p-4 rounded-2xl bg-black/80 backdrop-blur-xl border border-white/10">
+                <div className="flex flex-col gap-2">
+                  {navItems.map((item, index) => {
+                    const active = isActive(item.path);
+                    return (
+                      <motion.div
+                        key={item.path}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
                       >
-                        <motion.div
-                          animate={active ? item.animation.active : {}}
-                          whileHover={item.animation.hover}
-                          transition={{ 
-                            duration: 0.6,
-                            repeat: active ? Infinity : 0,
-                            repeatDelay: active ? 2 : 0
-                          }}
+                        <Link
+                          to={item.path}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={`
+                            block px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300
+                            ${active
+                              ? "bg-white text-black"
+                              : "text-gray-400 hover:text-white hover:bg-white/5"
+                            }
+                          `}
                         >
-                          <Icon className="w-5 h-5" />
-                        </motion.div>
-                        <div>
-                          <span className="font-mono text-sm uppercase tracking-wider block">{item.name}</span>
-                          <span className="text-xs text-gray-400">{item.description}</span>
-                        </div>
-                      </TransitionLink>
-                    </motion.div>
-                  );
-                })}
-              </nav>
+                          {item.label}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                {/* Mobile CTA */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="mt-4 pt-4 border-t border-white/10"
+                >
+                  <Link
+                    to="/connect"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <button className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold">
+                      Let's Talk
+                    </button>
+                  </Link>
+                </motion.div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </motion.header>
+      </nav>
+    </header>
   );
 };
 

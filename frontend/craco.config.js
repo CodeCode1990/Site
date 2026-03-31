@@ -1,46 +1,94 @@
-// Load configuration from environment or config file
-const path = require('path');
+// frontend/craco.config.js
+const path = require("path");
+const pkg = require("./package.json");
 
-// Environment variable overrides
+// Read homepage from package.json (e.g., "https://CodeCode1990.github.io/Site")
+// and normalize to a path with trailing slash: "/Site/"
+function getServedPath() {
+  const homepage = process.env.PUBLIC_URL || pkg.homepage || "/";
+  try {
+    const u = new URL(homepage);
+    const p = u.pathname || "/";
+    return p.endsWith("/") ? p : `${p}/`;
+  } catch {
+    // if homepage is already a path (e.g. "/Site")
+    const p = homepage.startsWith("/") ? homepage : `/${homepage}`;
+    return p.endsWith("/") ? p : `${p}/`;
+  }
+}
+
+// Environment toggle
 const config = {
-  disableHotReload: process.env.DISABLE_HOT_RELOAD === 'true',
+  disableHotReload: process.env.DISABLE_HOT_RELOAD === "true",
 };
 
 module.exports = {
   webpack: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
     },
     configure: (webpackConfig) => {
-      
-      // Disable hot reload completely if environment variable is set
       if (config.disableHotReload) {
-        // Remove hot reload related plugins
-        webpackConfig.plugins = webpackConfig.plugins.filter(plugin => {
-          return !(plugin.constructor.name === 'HotModuleReplacementPlugin');
-        });
-        
-        // Disable watch mode
+        // remove Hot Module Replacement plugin if disabled
+        webpackConfig.plugins = webpackConfig.plugins.filter(
+          (p) =>
+            !(
+              p &&
+              p.constructor &&
+              p.constructor.name === "HotModuleReplacementPlugin"
+            )
+        );
         webpackConfig.watch = false;
-        webpackConfig.watchOptions = {
-          ignored: /.*/, // Ignore all files
-        };
+        webpackConfig.watchOptions = { ignored: /.*/ };
       } else {
-        // Add ignored patterns to reduce watched directories
+        // IMPORTANT: do not ignore "public/**"
         webpackConfig.watchOptions = {
-          ...webpackConfig.watchOptions,
+          ...(webpackConfig.watchOptions || {}),
           ignored: [
-            '**/node_modules/**',
-            '**/.git/**',
-            '**/build/**',
-            '**/dist/**',
-            '**/coverage/**',
-            '**/public/**',
+            "**/node_modules/**",
+            "**/.git/**",
+            "**/build/**",
+            "**/dist/**",
+            "**/coverage/**",
+            // removed "**/public/**"
           ],
         };
       }
-      
       return webpackConfig;
     },
+  },
+
+  devServer: (devServerConfig) => {
+    const servedPath = getServedPath(); // e.g., "/Site/"
+
+    // Serve static files from "public" at the correct base path
+    devServerConfig.static = [
+      {
+        directory: path.resolve(__dirname, "public"),
+        publicPath: servedPath, // expose under /Site/*
+        watch: true,
+        serveIndex: true, // optional: http://localhost:3000/Site/Certificates lists files
+      },
+    ];
+
+    // SPA fallback must return index.html under the same base
+    devServerConfig.historyApiFallback = {
+      disableDotRule: true,
+      index: `${servedPath}index.html`,
+    };
+
+    // Ensure webpack dev middleware outputs bundles under /Site/*
+    devServerConfig.devMiddleware = {
+      ...(devServerConfig.devMiddleware || {}),
+      publicPath: servedPath,
+    };
+
+    // Optional: only overlay errors
+    devServerConfig.client = {
+      ...(devServerConfig.client || {}),
+      overlay: { errors: true, warnings: false },
+    };
+
+    return devServerConfig;
   },
 };

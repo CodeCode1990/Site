@@ -1,160 +1,159 @@
-// Mock data for the data analyst portfolio
+// src/data/mock.js
+import ride1 from "../assets/projects/Ride1.png";
+import ride2 from "../assets/projects/Ride2.png";
+import ride3 from "../assets/projects/Ride3.png";
+
+import pharma1 from "../assets/projects/Page 1 animation.gif";
+import pharma2 from "../assets/projects/Page 2 Animation.gif";
+import pharma3 from "../assets/projects/Page 3 Animation.gif";
 
 export const mockProjects = [
   {
     id: 1,
-    title: "Customer Behavior Analytics Platform",
-    description: "Comprehensive analysis of customer journey data to identify key touchpoints and optimize conversion rates across multiple channels.",
-    category: "business-intelligence",
-    technologies: ["Python", "SQL", "Tableau", "AWS", "Machine Learning", "A/B Testing"],
-    date: "2024",
-    impact: "15% increase in conversion rates",
-    githubUrl: "https://github.com/example",
-    featured: true
+    title: "Tic Tac Toe Game",
+    category: ["python-minigames"],
+    description: "A classic terminal-based Tic Tac Toe game built with Python, featuring error handling, win detection, and an optional AI opponent using simple logic.",
+    technologies: ["Python"],
+    date: "May-2025",
+    impact: "Fun side project to sharpen Python logic",
+    githubUrl: "https://github.com/CodeCode1990/Python-MiniGames/tree/main/Tic-Tac-Toe"
   },
   {
     id: 2,
-    title: "Predictive Sales Forecasting Model",
-    description: "Built machine learning models to predict quarterly sales performance with 92% accuracy, enabling better inventory management and resource allocation.",
-    category: "machine-learning",
-    technologies: ["Python", "Scikit-learn", "Pandas", "Time Series Analysis", "PostgreSQL"],
-    date: "2024",
-    impact: "92% prediction accuracy",
-    githubUrl: null,
-    featured: true
+    title: "War Cards Game",
+    category: ["python-minigames"],
+    description: "A Python implementation of the card game 'War', featuring randomized deck creation, tied rounds, and score tracking.",
+    technologies: ["Python"],
+    date: "May-2025",
+    impact: "Strengthened understanding of loops and data structures",
+    githubUrl: "https://github.com/CodeCode1990/Python-MiniGames/tree/main/War_Card_Game"
   },
   {
     id: 3,
-    title: "Financial Risk Assessment Dashboard",
-    description: "Interactive dashboard analyzing market trends and risk factors for investment portfolio optimization across different asset classes.",
-    category: "financial-analysis",
-    technologies: ["R", "Shiny", "Power BI", "Excel VBA", "SQL Server", "Monte Carlo"],
-    date: "2023",
-    impact: "25% risk reduction",
-    githubUrl: "https://github.com/example",
-    featured: false
+    title: "FDA CAERS Data Analysis",
+    category: ["data-analysis"],
+    description: "Analyzed FDA's CAERS dataset to uncover patterns in reported adverse events, applying data cleaning, visualization, and trend analysis techniques using Pandas and Matplotlib.",
+    technologies: ["Python", "Pandas", "Matplotlib", "Jupyter Notebook"],
+    date: "Oct-2025",
+    impact: "Derived actionable insights from real-world healthcare data",
+    githubUrl: "https://github.com/CodeCode1990/Data-Analysis-Projects/tree/main/Food%20Adverse%20Events"
   },
   {
     id: 4,
-    title: "Social Media Sentiment Analysis",
-    description: "Natural language processing pipeline to analyze brand sentiment across social platforms and track reputation metrics in real-time.",
-    category: "nlp-analytics",
-    technologies: ["Python", "NLTK", "Sentiment Analysis", "API Integration", "MongoDB"],
-    date: "2023",
-    impact: "Real-time brand monitoring",
-    githubUrl: "https://github.com/example",
-    featured: true
+    title: "Ride Analysis Project",
+    category: ["data-analysis", "dashboarding"],
+    images: [ride1, ride2, ride3],
+    description: "Performed exploratory data analysis and interactive story telling on ride-sharing data to identify trends in demand, pricing, and rider behavior.",
+    technologies: ["SQL", "Excel", "Tableau"],
+    date: "Sep-2025",
+    impact: "Improved understanding of temporal and categorical patterns",
+    githubUrl: "https://github.com/CodeCode1990/Data-Analysis-Projects/tree/main/Apex%20Rides%20Reports%20(Rides%20Analysis%20and%20Dashboarding)",
+    tableauUrl: "https://public.tableau.com/app/profile/yash.patel5956/viz/ARideAnalyticsProject/Dashboard43_1",
   },
   {
     id: 5,
-    title: "E-commerce Performance Analysis",
-    description: "End-to-end analysis of e-commerce metrics including customer acquisition costs, lifetime value, and product performance optimization.",
-    category: "business-intelligence",
-    technologies: ["SQL", "Python", "Google Analytics", "Looker", "Statistical Analysis"],
-    date: "2023",
-    impact: "30% improvement in ROI",
-    githubUrl: null,
-    featured: false
+    title: "Automated Banking Transaction Dashboard",
+    category: ["automation-bi", "dashboarding"],
+    description: "Built a fully automated ETL and reporting pipeline — SSPS cleans data on SSMS, updates stored data to Power BI dashboards without manual intervention.",
+    technologies: ["SSMS", "SSPS", "Power BI", "ETL"],
+    date: "2025 (Ongoing)",
+    impact: "Automation reduced manual reporting time by 90%",
+    githubUrl: "" 
   },
   {
     id: 6,
-    title: "Supply Chain Optimization Model",
-    description: "Predictive modeling for supply chain efficiency, reducing costs and improving delivery times through data-driven optimization strategies.",
-    category: "operations-research",
-    technologies: ["Python", "Linear Programming", "Optimization", "SQL", "Tableau"],
-    date: "2022",
-    impact: "20% cost reduction",
-    githubUrl: "https://github.com/example",
-    featured: false
+    title: "Pharma Sales Analysis Project",
+    category: ["data-analysis", "dashboarding"],
+    images: [pharma1, pharma2, pharma3],
+    description: "End-to-end data analytics solution analyzing synthetic pharmaceutical sales data (2021-2025). Built with Python, SQL, and Power BI to identify sales stagnation, evaluate patient retention, and develop a data-driven pivot strategy.",
+    technologies: ["Python", "SQL Server", "Power BI", "DAX"],
+    date: "2025",
+    impact: "Identified root causes of revenue plateau and developed actionable retention strategies.",
+    githubUrl: "https://github.com/CodeCode1990/Data-Analysis-Projects/tree/main/pharma%20sales%20project"
   }
 ];
 
 export const mockEducation = [
   {
-    degree: "Master of Science in Data Science",
-    institution: "University of California, Berkeley",
-    location: "Berkeley, CA",
-    period: "2020 - 2022",
-    gpa: "3.9/4.0",
-    description: "Specialized in machine learning, statistical modeling, and data visualization. Focused on applying advanced analytics to solve real-world business problems.",
+    degree: "Bachelor of Pharmacy",
+    institution: "Rajiv Gandhi University of Health Science",
+    location: "Bangalore, Karnataka, India",
+    period: "2007 - 2011",
+    gpa: "3.7/4.0",
+    description: "Completed a comprehensive four-year degree covering pharmaceutical science, drug formulation, and clinical pharmacy, with strong emphasis on practical training and research methodology.",
     achievements: [
-      "Dean's List for Academic Excellence (4 semesters)",
-      "Graduate Research Assistant - Data Science Lab",
-      "Published 2 peer-reviewed papers on predictive modeling",
-      "Winner of University Data Science Competition 2022"
+      "Volunteered and participated at Entrepreneurship Awareness Camp conducted by college",
+      "Have worked on various instruments like UV-Visible spectrophotometer, HPLC, Gas Chromatography, HPTLC, Biochemistry Semi-Auto analyzer, PCR, Gel electrophoresis.",
+      "Internship at TROIKAA pharmaceuticals - training in methods of production, QA/QC, formulation and development and other practical aspects of pharmacy."
+          ]
+  },
+  {
+    degree: "Master of Pharmacy (Major: Pharmacology)",
+    institution: "NIRMA University",
+    location: "Ahmedabad, Gujarat, India",
+    period: "2012 - 2014",
+    gpa: "3.7/4.0",
+    description: "Completed a two-year postgraduate program specializing in pharmacology and clinical studies, incorporating rigorous coursework, research, and industry-relevant trainings.",
+    achievements: [
+      "Publishing research and completed thesis on exploring the effect of secoisolariciresinol diglycoside (SDG) rich fraction of Linumusitatissimum L. on skin cancer and determination of its mechanism of action.",
+      "Poster presentations entitled 'Stem Cell Therapy for Cardiac Failure' in NIPiCON-2013 and 'Oncolytic Virus: A help by an old foe' presented in NIPiCON-2014.",
+      "Volunteered in Preclinical workshop 'Preclinical animal models and drug evaluation techniques' held at Institute of Pharmacy, NIRMA university",
+      "Internship at ACCUTEST Research Laboratories - training related clinical trial development and quality control department."
     ]
   },
   {
-    degree: "Bachelor of Science in Statistics",
-    institution: "University of California, Los Angeles",
-    location: "Los Angeles, CA",
-    period: "2016 - 2020",
+    degree: "Post Graduate Diploma (PGDM) - Clinical Research, Drug Safety and Pharmacovigilance",
+    institution: "Academy of Applied Pharmaceutical Sciences (AAPS)",
+    location: "Mississauga, Ontario, Canada",
+    period: "2020 - 2021",
     gpa: "3.8/4.0",
-    description: "Strong foundation in mathematical statistics, probability theory, and computational methods with emphasis on business applications.",
+    description: "Completed comprehensive coursework covering Canadian pharmaceutical industry insights, regulatory affairs, and good manufacturing and clinical practices, emphasizing drug development, safety assessments, and compliance frameworks. Gained practical knowledge in clinical trial management, pharmacovigilance, technical writing, and global regulatory strategies for pharmaceuticals, biologics, and medical devices.",
     achievements: [
-      "Magna Cum Laude graduate",
-      "Statistics Department Honor Society member",
-      "Research intern at UCLA Business Analytics Center",
-      "Capstone project on financial market analysis"
+      "Knowledge on different regulatory submissions like CTA, ANDA/ANDS, NDA/NDS, eCTD.",
+      "Learned principles of clinical trial design, GCP, and global research regulations.",
+      "Gained knowledge of regulatory guidelines and drug safety frameworks for ensuring compliance and patient safety.",
+      "Acquired skills in regulatory submissions, documentation, and coding systems (MedDRA, ICD-10, WHO-DD)."
     ]
   }
 ];
 
 export const mockCertifications = [
   {
-    name: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2023",
-    expiry: "2026",
-    description: "Cloud architecture certification focusing on scalable data analytics solutions and machine learning deployment.",
-    skills: ["Cloud Architecture", "Data Lakes", "Machine Learning", "Security"],
-    credentialUrl: "https://example.com/credential"
+    name: "The Complete Python Bootcamp From Zero to Hero in Python",
+    issuer: "Udemy",
+    date: "Jul-2025",
+    expiry: "N/A",
+    description: "Completed core Python concepts from basics to advanced topics through hands-on coding exercises, projects, and practical applications. This highly rated course strengthened skills in data handling, automation, web scraping, and object-oriented programming, supporting real-world development and data-driven solutions.",
+    skills: ["Python Programming", "Web Scraping", "Error Handling", "Data Structure"],
+    credentialUrl: "https://www.udemy.com/certificate/UC-08b0f3ab-9ef9-417b-8baa-3acadc0ecb4e/"
   },
   {
-    name: "Google Professional Data Engineer",
-    issuer: "Google Cloud",
-    date: "2022",
-    expiry: "2025",
-    description: "Expertise in designing and building data processing systems and machine learning models on Google Cloud Platform.",
-    skills: ["BigQuery", "Data Pipeline", "ML Engineering", "Data Governance"],
-    credentialUrl: "https://example.com/credential"
+    name: "Google Analytics 4 Certification",
+    issuer: "Skillshop",
+    date: "Sep-2025",
+    expiry: "Sep-2026",
+    description: "Certification includes mastering key concepts in event-based tracking, conversion optimization, and the new GA4 reporting interface. Gained practical experience in configuring properties, analyzing user behavior, and integrating GA4 with Google Ads for data-driven marketing insights",
+    skills: ["Data Tracking", "User Analytics", "Tag Management", "Conversion Measurement"],
+    credentialUrl: "https://skillshop.credential.net/d823b29a-56ac-4c9d-ae09-d24ff519b1b7#acc.6xzkQ59T"
   },
   {
-    name: "Certified Analytics Professional (CAP)",
-    issuer: "INFORMS",
-    date: "2022",
+    name: "Google Data Analytics Professional Certificate",
+    issuer: "Coursera",
+    date: "2025",
     expiry: null,
-    description: "Professional certification recognizing mastery of the analytics process from framing business problems to deploying solutions.",
-    skills: ["Analytics Strategy", "Problem Solving", "Data Science Lifecycle", "Business Intelligence"],
-    credentialUrl: "https://example.com/credential"
+    description: "Completed eight comprehensive courses focused on foundational data analytics skills. Gained hands-on experience with key tools like spreadsheets, SQL, Tableau, and R to prepare, process, analyze, and visualize data, enabling data-driven decision making for business contexts.",
+    skills: ["BigQuery", "Tableau", "R", "Data Analysis", "Data Visualization"],
+    credentialUrl: "https://www.credly.com/badges/df8a4f31-9b95-4d41-8315-ad3cd45996a0/linked_in_profile"
   },
   {
-    name: "Tableau Desktop Specialist",
-    issuer: "Tableau",
-    date: "2023",
-    expiry: "2026",
-    description: "Advanced certification in data visualization and dashboard development using Tableau's comprehensive analytics platform.",
+    name: "IBM Data Analyst - From Basics of Data Analytics to Capstone Project",
+    issuer: "Coursera",
+    date: "2026",
+    expiry: null,
+    description: "Covers core concepts, basic statistics, and data handling in Excel, SQL, and Python to building clear visualizations and dashboards for stakeholders. You then apply all these skills in an end‑to‑end, real‑world style capstone project that showcases your complete analytics workflow and becomes a strong portfolio piece.",
     skills: ["Data Visualization", "Dashboard Design", "Business Intelligence", "Analytics"],
-    credentialUrl: "https://example.com/credential"
+    credentialUrl: "https://www.credly.com/users/yash-patel.e8a2fbd7/badges"
   },
-  {
-    name: "Microsoft Azure Data Scientist Associate",
-    issuer: "Microsoft",
-    date: "2023",
-    expiry: "2025",
-    description: "Certification in implementing and running machine learning workloads on Azure cloud platform.",
-    skills: ["Azure ML", "Data Science", "Machine Learning", "Cloud Computing"],
-    credentialUrl: "https://example.com/credential"
-  },
-  {
-    name: "Python for Data Science Specialization",
-    issuer: "University of Michigan (Coursera)",
-    date: "2021",
-    expiry: null,
-    description: "Comprehensive specialization covering Python programming for data analysis, visualization, and machine learning applications.",
-    skills: ["Python Programming", "Data Analysis", "Machine Learning", "Data Visualization"],
-    credentialUrl: "https://example.com/credential"
-  }
 ];
 
 export const mockSkills = {
