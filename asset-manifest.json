@@ -1,13 +1,42 @@
 {
   "files": {
-    "main.css": "/Site/static/css/main.6263cfac.css",
-    "main.js": "/Site/static/js/main.c8bb066c.js",
+    "main.css": "/Site/static/css/main.49c020a2.css",
+    "main.js": "/Site/static/js/main.27831580.js",
+    "static/media/Page 3 Animation.gif": "/Site/static/media/Page 3 Animation.048dc5fd3e6955b8acbd.gif",
+    "static/media/Page 2 Animation.gif": "/Site/static/media/Page 2 Animation.8de4727f8f347a6efac7.gif",
+    "static/media/profile.jpg": "/Site/static/media/profile.fdb3499836cc28e6d513.jpg",
+    "static/media/Page 1 animation.gif": "/Site/static/media/Page 1 animation.a23282e62e718b0592ef.gif",
+    "static/media/Ride2.png": "/Site/static/media/Ride2.ab651a99b3b2bb3e66d5.png",
+    "static/media/Ride3.png": "/Site/static/media/Ride3.75ed709c15dc0cebf147.png",
+    "static/media/Ride1.png": "/Site/static/media/Ride1.c8bda1eccb1e1b019e1a.png",
+    "static/media/matplotlib.svg": "/Site/static/media/matplotlib.92136fd83df89b79cd25f516a96c97ba.svg",
+    "static/media/MSSQL.svg": "/Site/static/media/MSSQL.faf9645db7accb5d88a409189ad0a7d8.svg",
+    "static/media/seaborn.svg": "/Site/static/media/seaborn.653bbba50db2d3973db2dac018071602.svg",
+    "static/media/jupyter-seeklogo.svg": "/Site/static/media/jupyter-seeklogo.6fecc851abfe23cf932ac8749b2e5590.svg",
+    "static/media/postgresql.svg": "/Site/static/media/postgresql.25b6649b974f435d4ce39be05ef0a276.svg",
+    "static/media/MS_Office.svg": "/Site/static/media/MS_Office.3f38230870bb601609bee4c72b68d504.svg",
+    "static/media/looker.svg": "/Site/static/media/looker.679a979720a110342f7e57e5e6552998.svg",
+    "static/media/pycharm.svg": "/Site/static/media/pycharm.b97f8912e1542c64ea5dce34ff9df296.svg",
+    "static/media/mysql.svg": "/Site/static/media/mysql.c6ca7851872c0245319bc3fd03d2dc37.svg",
+    "static/media/Microsoft-365.svg": "/Site/static/media/Microsoft-365.33b90f959b39d8fdfb30953a334db54a.svg",
     "index.html": "/Site/index.html",
-    "main.6263cfac.css.map": "/Site/static/css/main.6263cfac.css.map",
-    "main.c8bb066c.js.map": "/Site/static/js/main.c8bb066c.js.map"
+    "static/media/sharepoint.svg": "/Site/static/media/sharepoint.054eed443eda9d925a60fe66eb0e0546.svg",
+    "static/media/r.svg": "/Site/static/media/r.2e932622372d8f5023733d69606999f0.svg",
+    "static/media/bigquery.svg": "/Site/static/media/bigquery.720c13170015478ead0aa99ae8476081.svg",
+    "static/media/python.svg": "/Site/static/media/python.e6d7dc739a91892bbf1f6262412046dd.svg",
+    "static/media/mongodb.svg": "/Site/static/media/mongodb.057a8274119a5f9a1a2943282ca36b77.svg",
+    "static/media/power-bi.svg": "/Site/static/media/power-bi.04b6c3d5b7b5aa02bf457774754061f5.svg",
+    "static/media/google-colab.svg": "/Site/static/media/google-colab.d1d5dccdd01abdb0e339ada636d97a9d.svg",
+    "static/media/git.svg": "/Site/static/media/git.c60b7e5ae8ec2562f23fdddcab300026.svg",
+    "static/media/tableau.svg": "/Site/static/media/tableau.be3c51045e321802db1185ec063fa7bd.svg",
+    "static/media/numpy.svg": "/Site/static/media/numpy.8162b2ca384413a8fb54668b61ad1da9.svg",
+    "static/media/vscode.svg": "/Site/static/media/vscode.96a3028e4cdd694bc4f0f8db048a8100.svg",
+    "static/media/pandas.svg": "/Site/static/media/pandas.7c946a48cf7061ef9e39174f7dd01c4e.svg",
+    "main.49c020a2.css.map": "/Site/static/css/main.49c020a2.css.map",
+    "main.27831580.js.map": "/Site/static/js/main.27831580.js.map"
   },
   "entrypoints": [
-    "static/css/main.6263cfac.css",
-    "static/js/main.c8bb066c.js"
+    "static/css/main.49c020a2.css",
+    "static/js/main.27831580.js"
   ]
 }
